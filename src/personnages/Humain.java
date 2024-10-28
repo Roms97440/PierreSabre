@@ -28,7 +28,7 @@ public class Humain {
 	// La méthode n'est utilisé que par la classe Humain, sa visibilité doit être
 	// privé (changer à protected à partir de 2.1.a )
 	protected void parler(String texte) {
-		System.out.println(texte);
+		System.out.println("(" + nom + ")" + texte);
 	}
 
 	public void direBonjour() {
