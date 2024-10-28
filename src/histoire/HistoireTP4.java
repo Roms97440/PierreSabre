@@ -33,6 +33,8 @@ public class HistoireTP4 {
 		roro.direBonjour();
 		roro.donner(marco);
 
+		System.out.println("\nScénario 5 : ");
+		roro.provoquer(yaku);
 	}
 
 }
