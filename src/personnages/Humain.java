@@ -6,9 +6,11 @@ public class Humain {
 	private int argent;
 
 	public Humain(String nom, String boisson, int argent) {
+		assert argent >= 0;
 		this.nom = nom;
 		boissonFav = boisson;
 		this.argent = argent;
+
 	}
 
 	public String getNom() {
@@ -23,30 +25,34 @@ public class Humain {
 		return argent;
 	}
 
+	// La méthode n'est utilisé que par la classe Humain, sa visibilité doit être
+	// privé (changer à protected à partir de 2.1.a )
+	protected void parler(String texte) {
+		System.out.println(texte);
+	}
+
 	public void direBonjour() {
-		System.out.println("Bonjour ! je m'apelle " + getNom() + " et j'aime boire du " + getBoissonFav() + ".");
+		parler("Bonjour ! je m'apelle " + getNom() + " et j'aime boire du " + getBoissonFav() + ".");
 	}
 
 	public void boire() {
-		System.out.println("Mmmm un bon verre de " + getBoissonFav() + " ! GLOUPS !");
+		parler("Mmmm un bon verre de " + getBoissonFav() + " ! GLOUPS !");
 	}
 
 	public void acheter(String bien, int prix) {
 		if (prix > argent) {
-			System.out.println("J'ai " + getArgent() + " en poche. Je ne peux même pas m'offrir un " + bien + " à "
-					+ prix + " sous");
+			parler("J'ai " + getArgent() + " en poche. Je ne peux même pas m'offrir " + bien + " à " + prix + " sous");
 		} else {
-			System.out.println(
-					"J'ai " + getArgent() + " en poche. Je vais pouvoir m'offrir un " + bien + " à " + prix + " sous");
+			parler("J'ai " + getArgent() + " en poche. Je vais pouvoir m'offrir " + bien + " à " + prix + " sous");
 			perdreArgent(prix);
 		}
 	}
 
-	private void gagnerArgent(int gain) {
+	protected void gagnerArgent(int gain) {// passer à protected à partir de 2.1.a
 		argent += gain;// bizarre
 	}
 
-	private void perdreArgent(int perte) {
+	protected void perdreArgent(int perte) {// passer à protected à partir de 2.1.a
 		argent -= perte;// bizarre
 	}
 
